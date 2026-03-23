@@ -126,7 +126,7 @@
     }
     .stat:first-child{border-top:none;padding-top:0}
     .stat h3{margin:0 0 6px;font-size:1.2rem}
-    .stat p,.panel p,.clip p,.section-sub{margin:0;color:#d3d9e5}
+    .stat p,.panel p,.clip-copy,.section-sub{margin:0;color:#d3d9e5}
     section{padding:28px 0 0}
     .section-head{
       display:flex;justify-content:space-between;align-items:end;gap:18px;
@@ -145,13 +145,27 @@
       gap:18px;
     }
     .clip{
-      padding:22px;
-      min-height:255px;
+      padding:18px;
       display:flex;
       flex-direction:column;
-      justify-content:space-between;
+      gap:16px;
     }
-    .clip h3{margin:0 0 10px;font-size:1.28rem}
+    .embed-wrap{
+      width:100%;
+      overflow:hidden;
+      border-radius:18px;
+      border:1px solid var(--line);
+      background:#0f131c;
+      min-height:520px;
+    }
+    .embed-wrap iframe{
+      width:100%;
+      height:620px;
+      border:0;
+      display:block;
+      background:#0f131c;
+    }
+    .clip h3{margin:0 0 8px;font-size:1.2rem}
     .clip-link{font-weight:600}
     .two-col,.contact-box{
       display:grid;
@@ -179,11 +193,13 @@
     @media (max-width: 900px){
       .hero-wrap,.clips,.two-col,.contact-box{grid-template-columns:1fr}
       .hero-main{min-height:auto}
+      .embed-wrap iframe{height:680px}
     }
     @media (max-width: 640px){
       .nav-inner,.section-head{flex-direction:column;align-items:flex-start}
       .hero-main,.hero-side,.clip,.panel{border-radius:22px}
       h1{font-size:2.6rem}
+      .embed-wrap iframe{height:720px}
     }
   </style>
 </head>
@@ -241,36 +257,45 @@
     <div class="section-head">
       <div>
         <div class="section-kicker">Featured music</div>
-        <h2>Start with your best clips.</h2>
+        <h2>Watch the clips right here.</h2>
       </div>
       <div class="section-sub">
-        A few starting points that show your covers, your tone, and your original work.
+        Your site now opens with embedded Instagram posts so people can actually see the work instead of just reading about it.
       </div>
     </div>
 
     <div class="clips">
       <div class="clip">
+        <div class="embed-wrap">
+          <iframe src="https://www.instagram.com/p/DWMI1cOEa1W/embed" allowtransparency="true"></iframe>
+        </div>
         <div>
           <h3>The Story So Far - Quicksand Guitar Cover</h3>
-          <p>It’s been a minute since I’ve done guitar covers. Still tightening up the sync time between video and audio.</p>
+          <p class="clip-copy">It’s been a minute since I’ve done guitar covers. Still tightening up the sync between video and audio.</p>
         </div>
-        <a class="clip-link" href="https://www.instagram.com/p/DWMI1cOEa1W/" target="_blank">Open clip →</a>
+        <a class="clip-link" href="https://www.instagram.com/p/DWMI1cOEa1W/" target="_blank">Open on Instagram →</a>
       </div>
 
       <div class="clip">
+        <div class="embed-wrap">
+          <iframe src="https://www.instagram.com/p/DV96nYzEXtm/embed" allowtransparency="true"></iframe>
+        </div>
         <div>
           <h3>The Story So Far - States and Minds/Roam Guitar Cover</h3>
-          <p>Clip that I recorded without syncing up audio and video. Recorded straight off my laptop on Photo Booth.</p>
+          <p class="clip-copy">Recorded without syncing audio and video. Straight laptop capture, more raw and direct.</p>
         </div>
-        <a class="clip-link" href="https://www.instagram.com/p/DV96nYzEXtm/" target="_blank">Open clip →</a>
+        <a class="clip-link" href="https://www.instagram.com/p/DV96nYzEXtm/" target="_blank">Open on Instagram →</a>
       </div>
 
       <div class="clip">
+        <div class="embed-wrap">
+          <iframe src="https://www.instagram.com/p/DTK8cPREZIG/embed" allowtransparency="true"></iframe>
+        </div>
         <div>
           <h3>Original Track I Wrote/Produced</h3>
-          <p>Check out Felly and Gyps reviewing my track.</p>
+          <p class="clip-copy">A different side of the project with original work and outside feedback on the track.</p>
         </div>
-        <a class="clip-link" href="https://www.instagram.com/p/DTK8cPREZIG/" target="_blank">Open clip →</a>
+        <a class="clip-link" href="https://www.instagram.com/p/DTK8cPREZIG/" target="_blank">Open on Instagram →</a>
       </div>
     </div>
   </section>
