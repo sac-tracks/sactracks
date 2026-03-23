@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sac Tracks</title>
+  <style>
+    :root{
+      --bg:#0b0d12;
+      --panel:#121722;
+      --text:#f4f7fb;
+      --muted:#aeb8c9;
+      --line:rgba(255,255,255,.08);
+      --accent:#ffffff;
+      --shadow:0 20px 50px rgba(0,0,0,.35);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family: Inter, Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(110,130,255,.12), transparent 28%),
+        radial-gradient(circle at top right, rgba(255,255,255,.05), transparent 20%),
+        linear-gradient(180deg, #0a0d14 0%, #0b0d12 100%);
+      color:var(--text);
+      line-height:1.6;
+    }
+    a{color:inherit;text-decoration:none}
+    .container{width:min(1120px, 92%);margin:0 auto}
+    .nav{
+      position:sticky;top:0;z-index:20;
+      backdrop-filter: blur(12px);
+      background:rgba(11,13,18,.65);
+      border-bottom:1px solid var(--line);
+    }
+    .nav-inner{
+      display:flex;justify-content:space-between;align-items:center;
+      padding:18px 0;gap:20px;
+    }
+    .brand{
+      font-weight:800;font-size:1.05rem;letter-spacing:.08em;
+      text-transform:uppercase;
+    }
+    .nav-links{
+      display:flex;gap:22px;flex-wrap:wrap;color:var(--muted);
+      font-size:.96rem;
+    }
+    .nav-links a:hover{color:var(--text)}
+    .hero{padding:88px 0 56px}
+    .hero-wrap{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap:24px;
+      align-items:stretch;
+    }
+    .hero-main,.hero-side,.panel,.clip{
+      background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.015));
+      border:1px solid var(--line);
+      border-radius:28px;
+      box-shadow:var(--shadow);
+    }
+    .hero-main{
+      padding:42px;
+      min-height:470px;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+    }
+    .eyebrow{
+      display:inline-flex;
+      gap:10px;
+      align-items:center;
+      color:var(--muted);
+      text-transform:uppercase;
+      letter-spacing:.14em;
+      font-size:.75rem;
+      margin-bottom:18px;
+    }
+    h1{
+      margin:0 0 16px;
+      font-size:clamp(3rem, 6vw, 6rem);
+      line-height:.96;
+      letter-spacing:-.04em;
+      max-width:760px;
+    }
+    .hero-copy{
+      max-width:680px;
+      color:#d3d9e5;
+      font-size:1.08rem;
+      margin:0 0 28px;
+    }
+    .button-row{
+      display:flex;gap:14px;flex-wrap:wrap;
+    }
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;
+      padding:13px 18px;border-radius:999px;
+      border:1px solid rgba(255,255,255,.14);
+      transition:.2s ease;
+      font-weight:600;
+    }
+    .btn:hover{transform:translateY(-1px);border-color:rgba(255,255,255,.3)}
+    .btn.primary{
+      background:var(--accent);
+      color:#0b0d12;
+      border-color:var(--accent);
+    }
+    .hero-side{
+      padding:28px;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      gap:20px;
+    }
+    .mini-label,.section-kicker{
+      color:var(--muted);
+      text-transform:uppercase;
+      font-size:.74rem;
+      letter-spacing:.12em;
+      margin-bottom:10px;
+    }
+    .stat{
+      padding:18px 18px 0 18px;
+      border-top:1px solid var(--line);
+    }
+    .stat:first-child{border-top:none;padding-top:0}
+    .stat h3{margin:0 0 6px;font-size:1.2rem}
+    .stat p,.panel p,.clip p,.section-sub{margin:0;color:#d3d9e5}
+    section{padding:28px 0 0}
+    .section-head{
+      display:flex;justify-content:space-between;align-items:end;gap:18px;
+      margin-bottom:20px;
+    }
+    h2{
+      margin:0;
+      font-size:clamp(1.9rem,3vw,3rem);
+      line-height:1.03;
+      letter-spacing:-.03em;
+    }
+    .section-sub{max-width:620px}
+    .clips{
+      display:grid;
+      grid-template-columns:repeat(3, 1fr);
+      gap:18px;
+    }
+    .clip{
+      padding:22px;
+      min-height:255px;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+    }
+    .clip h3{margin:0 0 10px;font-size:1.28rem}
+    .clip-link{font-weight:600}
+    .two-col,.contact-box{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:18px;
+    }
+    .panel{padding:26px}
+    .panel h3{margin:0 0 12px;font-size:1.25rem}
+    ul{margin:0;padding-left:18px;color:#d3d9e5}
+    li+li{margin-top:8px}
+    .footer{
+      padding:28px 0 60px;
+      color:var(--muted);
+      font-size:.95rem;
+    }
+    .badge{
+      display:inline-block;
+      padding:6px 10px;
+      border:1px solid var(--line);
+      border-radius:999px;
+      color:var(--muted);
+      font-size:.82rem;
+      margin-bottom:14px;
+    }
+    @media (max-width: 900px){
+      .hero-wrap,.clips,.two-col,.contact-box{grid-template-columns:1fr}
+      .hero-main{min-height:auto}
+    }
+    @media (max-width: 640px){
+      .nav-inner,.section-head{flex-direction:column;align-items:flex-start}
+      .hero-main,.hero-side,.clip,.panel{border-radius:22px}
+      h1{font-size:2.6rem}
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="container nav-inner">
+      <div class="brand">Sac Tracks</div>
+      <div class="nav-links">
+        <a href="#music">Music</a>
+        <a href="#about">About</a>
+        <a href="#setup">Setup</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="container hero-wrap">
+      <div class="hero-main">
+        <div>
+          <div class="eyebrow">Guitar covers • tone • recording</div>
+          <h1>Sac Tracks</h1>
+          <p class="hero-copy">
+            A clean home base for guitar driven covers, stronger tones, and the sound behind the process.
+          </p>
+          <div class="button-row">
+            <a class="btn primary" href="https://instagram.com/sac_tracks" target="_blank">Watch on Instagram</a>
+            <a class="btn" href="mailto:sactracks13@gmail.com">Email Me</a>
+          </div>
+        </div>
+        <div class="badge">@sac_tracks</div>
+      </div>
+
+      <div class="hero-side">
+        <div>
+          <div class="mini-label">Current setup</div>
+          <div class="stat">
+            <h3>Core rig</h3>
+            <p>Fender Mustang • Ableton • UA Volt • Neural DSP</p>
+          </div>
+          <div class="stat">
+            <h3>Focus</h3>
+            <p>Better covers, tighter tones, cleaner recordings, and a stronger creative identity online.</p>
+          </div>
+          <div class="stat">
+            <h3>Contact</h3>
+            <p>sactracks13@gmail.com</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section id="music" class="container">
+    <div class="section-head">
+      <div>
+        <div class="section-kicker">Featured music</div>
+        <h2>Start with your best clips.</h2>
+      </div>
+      <div class="section-sub">
+        A few starting points that show your covers, your tone, and your original work.
+      </div>
+    </div>
+
+    <div class="clips">
+      <div class="clip">
+        <div>
+          <h3>The Story So Far - Quicksand Guitar Cover</h3>
+          <p>It’s been a minute since I’ve done guitar covers. Still tightening up the sync time between video and audio.</p>
+        </div>
+        <a class="clip-link" href="https://www.instagram.com/p/DWMI1cOEa1W/" target="_blank">Open clip →</a>
+      </div>
+
+      <div class="clip">
+        <div>
+          <h3>The Story So Far - States and Minds/Roam Guitar Cover</h3>
+          <p>Clip that I recorded without syncing up audio and video. Recorded straight off my laptop on Photo Booth.</p>
+        </div>
+        <a class="clip-link" href="https://www.instagram.com/p/DV96nYzEXtm/" target="_blank">Open clip →</a>
+      </div>
+
+      <div class="clip">
+        <div>
+          <h3>Original Track I Wrote/Produced</h3>
+          <p>Check out Felly and Gyps reviewing my track.</p>
+        </div>
+        <a class="clip-link" href="https://www.instagram.com/p/DTK8cPREZIG/" target="_blank">Open clip →</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="container">
+    <div class="two-col">
+      <div class="panel">
+        <div class="section-kicker">About</div>
+        <h2>Simple, real, and focused.</h2>
+        <p>
+          Sac Tracks is where I share guitar covers, tone experiments, and the ideas behind the sound. The goal is to keep building better recordings, sharper performances, and a style that feels true to me.
+        </p>
+      </div>
+      <div class="panel">
+        <div class="section-kicker">Direction</div>
+        <h3>What this site is for</h3>
+        <p>
+          A clean place to send people when they want to hear the music, see the setup, or reach out for collaborations and future session work.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="setup" class="container">
+    <div class="two-col">
+      <div class="panel">
+        <div class="section-kicker">Setup</div>
+        <h2>The gear behind the sound.</h2>
+        <ul>
+          <li>Fender Mustang</li>
+          <li>Ableton</li>
+          <li>Universal Audio Volt</li>
+          <li>Neural DSP</li>
+        </ul>
+      </div>
+      <div class="panel">
+        <div class="section-kicker">Why it matters</div>
+        <h3>Tone is part of the identity</h3>
+        <p>
+          This setup gives me a straightforward way to record, shape tones, and keep building a sound that feels modern, tight, and intentional.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="container">
+    <div class="contact-box">
+      <div class="panel">
+        <div class="section-kicker">Contact</div>
+        <h2>Let’s connect.</h2>
+        <p>
+          For collaborations, creative opportunities, or just to follow along, reach out by email or Instagram.
+        </p>
+      </div>
+      <div class="panel">
+        <div class="button-row">
+          <a class="btn primary" href="mailto:sactracks13@gmail.com">sactracks13@gmail.com</a>
+          <a class="btn" href="https://instagram.com/sac_tracks" target="_blank">@sac_tracks</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">© 2026 Sac Tracks</div>
+  </section>
+</body>
+</html>
